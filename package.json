@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-2025",
+  "version": "1.0.0",
+  "description": "this repo contains node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shivam-7Dev/nodejs-2025.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shivam-7Dev/nodejs-2025/issues"
+  },
+  "homepage": "https://github.com/shivam-7Dev/nodejs-2025#readme"
+}

@@ -1,0 +1,104 @@
+Major JavaScript Runtime Environments
+
+1. Browser Runtimes (Chrome, Firefox, Safari, Edge):
+    Examples: Chrome's V8 runtime, Firefox's SpiderMonkey, Safari's JavaScriptCore
+    Characteristics of Browser Runtime:
+        Designed for client-side execution in web browsers
+        Provide Web APIs (DOM, BOM, Web Storage, etc.)
+        Sandboxed environment with security restrictions
+        No direct filesystem access
+        Multi-threaded with Web Workers
+    Components of Browser Runtime:
+        JavaScript engine (V8, SpiderMonkey, etc.)
+        Web API implementations
+        Rendering engine (for DOM and CSSOM)
+        Event loop tailored for UI interactions
+
+2. Node.js Runtime
+    Characteristics of Nodejs Runtime:
+        built on Chromes v8 JavaScript engine
+        Designed for server side Javascript
+        provide direct system access(files, network, processes)
+        Non-blocking I/O model 
+        Single Threaded event loop architecture
+        No DOM or browser-specific API (by default)
+    Components of Nodejs Runtime
+        libuv(for async I/O operatios)
+        core modules(fs, http, path, etc)
+        npm (node package manager) ecosystem
+
+3. Deno Runtime
+    Characteristics of Deno runtime:
+        Also build on v8(like node js)
+        Created by node js developer
+        Secure by default(explicit permisssion for system acess)
+        Support typescript out of the box
+        Built in tooling(testing, formatting, etc)
+        Browser compatilbe api where possible
+    Difference from Node:
+        uses ES module exclusively(no require())
+        More moders standard library
+        Decentralized package management(URL imports)
+
+4. Bun Runtime
+    Characteristics of Bun Runtime:
+        Uses JavaScript core engine(from Safari) instead of v8
+        focuses of performance and developer experience
+        Implements nodejs api for compatibility
+        Includes built in tools (test runner, bundler, etc)
+        Native Support for both common js and Es module
+    Unique Aspects:
+        Extremetly fast startup time
+        Implements webapi like fetch
+        Includes a bundler and traspiler
+
+5. Web Workers
+    Characteristics of web Workers Runtime:
+        Browser bases backgroud threads
+        Limited communication with main thread(postMessage)
+        No DOM access
+        Seperate JavaScript environment from main thread
+
+6. Service Workers
+    Characteristics of service worker:
+        Browser runtime for proxy and caching
+        Run in the background, separate from web pages
+        Enables offline functionalities
+        Handles push notification
+
+
+
+How Runtime Environments Differ:
+
+    Execution context:
+        Browsers: Focus on DOM manipulation and UI
+        Node.js/Deno/Bun: Focus on server-side and system operations
+
+    APIs available:
+        Browsers: Web APIs (DOM, localStorage, etc.)
+        Node.js: System APIs (fs, process, etc.)
+        Deno: Web-compatible APIs with secure system access
+
+    Security Model:
+        Browsers: Highly restricted sandbox
+        Node.js: Full system access by default
+        Deno: Opt-in permission model
+
+    Module systems:
+        Modern browsers: ES Modules
+        Node.js: CommonJS and ES Modules
+        Deno: ES Modules only
+        Bun: Both CommonJS and ES Modules
+
+    performance characteristics:
+        Different engines (V8 vs JavaScriptCore vs SpiderMonkey)
+        Different optimization approaches
+        Startup time varies significantly
+
+    Event loop Implementaions:
+        Browsers: Prioritize UI rendering
+        Node.js: Optimized for I/O operations
+        Deno: Similar to browsers where possible
+
+
+

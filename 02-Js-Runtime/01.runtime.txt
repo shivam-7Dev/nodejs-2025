@@ -1,0 +1,60 @@
+Javascript Runtime:
+
+    A Javascript Runtime Environment is the ecosystem where Javascript code is executed.
+    It provides all the necessary components to run Javascript
+
+Core components of Javascript Runtime Environment:
+
+    1. Javascript Engine:
+        This is the Heart of the Runtime. It parses, interprets or complies
+        Javascript code into machine code that the computer can execute.
+        Eg: v8(used in chrome and Node.js)
+
+    2. Event Loop:
+        Javascript is single threaded lanaguage, meaning it can only do one thing
+        at a time.
+        Event loop is mechanism that allows Javascript to perform non-blocking
+        (asynchronous) operations. It continuously checks th message queue
+        for pending task and pushed them onto the call stack when the stack is empty
+
+    3. Callback queue( or message queue/Task queue): 
+        When the asynchronous operations( like setTimeout,I/O operations,Dom Event)
+        complete, their callback funtion are placed in this queue. 
+        The Event loop pull them for this queue and puch them in the call stack 
+        if the call stack is empty.
+
+    4.APIs(Application programming Interface):
+        These are set of built in functions and objects that Javascript code
+        can to interact with the Environment/
+
+        web APIs(in browsers):Provides functionalities related to browser, such
+        as DOM manipulation, fetch for making HTTP requests,
+        localstorage, setTimeout, console,etc.
+
+        C++ APIs and libuv(in Nodejs): Provides functionalities for serverside
+        operations, such as file system access(fs module)
+        network operations(http and net module)
+        interating with operating system(os module)
+        libuv is a c library that provides an event loop and asyn I/O capabilites
+        for Nodejs.
+
+    Unlike compiled languages that run directly on hardware, Javascript need this
+    Runtime to bridge between code and the machine
+
+
+Key Components of a JavaScript Runtime Environment
+
+    JavaScript Engine: The core that interprets/compiles and executes JS code (e.g., V8, SpiderMonkey)
+    Call Stack: Where function calls are stacked and executed (LIFO structure)
+    Memory Heap: Where objects and variables are stored in memory
+    Event Loop: Handles asynchronous operations and the execution order
+    Callback Queue: Holds asynchronous callbacks waiting to be executed
+    Web APIs (in browsers): Browser-provided APIs (DOM, setTimeout, etc.)
+    C++ Bindings/System APIs (in Node.js): For system-level operations
+    Module Loader: Handles importing/exporting of modules
+
+
+
+
+
+

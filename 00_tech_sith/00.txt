@@ -1,0 +1,42 @@
+//1
+(function () {
+    console.log("====question======");
+})();
+//2
+(function () {
+    console.log("====question======");
+})();
+//3
+(function () {
+    console.log("====question======");
+})();
+//4
+(function () {
+    console.log("====question======");
+})();
+//5
+(function () {
+    console.log("====question======");
+})();
+//6
+(function () {
+    console.log("====question======");
+})();
+//7
+(function () {
+    console.log("====question======");
+})();
+//8
+(function () {
+    console.log("====question======");
+})();
+//9
+(function () {
+    console.log("====question======");
+})();
+
+
+//10
+(function () {
+    console.log("====question======");
+})();

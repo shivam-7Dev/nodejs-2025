@@ -33,7 +33,37 @@
 */
   console.log("========one========");
 
-  console.log("=========End==========");
+  class FancyArray extends Array {
+    constructor() {
+      super();
+    }
+
+    mapWithLogging(cb) {
+      const newArr = [];
+      for (let index = 0; index < this.length; index++) {
+        newArr[index] = cb(this[index], index);
+
+        console.log(
+          `current:${this[index]} after callback:${cb(this[index], index)}`
+        );
+      }
+
+      return newArr;
+    }
+  }
+
+  const arr = new FancyArray();
+  console.log(arr);
+  arr.push(1);
+  arr.push(2);
+  arr.push(3);
+
+  console.log(arr);
+  const mapped = arr.mapWithLogging((item, i) => {
+    return item + i;
+  });
+  console.log(mapped);
+  console.log("=========End====sideLength======");
 })();
 (() => {
   /*
@@ -86,6 +116,47 @@
 */
   console.log("========Two========");
 
+  class Shape {
+    type = "Shape";
+    constructor(colour = "Transparent") {
+      this.colour = colour;
+    }
+
+    describe() {
+      console.log(`A ${this.colour} ${this.type}`);
+    }
+  }
+
+  class Square extends Shape {
+    constructor(colour, sideLength) {
+      super(colour);
+      this.colour = colour;
+      this.sideLength = sideLength;
+    }
+
+    area() {
+      console.log("the area of square is", this.sideLength * this.sideLength);
+    }
+  }
+
+  class Rectangle extends Shape {
+    constructor(colour, length, width) {
+      super(colour);
+      this.length = length;
+      this.width = width;
+    }
+
+    area() {
+      console.log(`area of rectange is `, this.length * this.width);
+    }
+  }
+  const square = new Square("blue", 5);
+  const rectangle = new Rectangle("red", 5, 6);
+  console.log(square.area()); // 25
+  console.log(rectangle.area()); // 30
+  for (const shape of [square, rectangle]) shape.describe();
+  // A blue square
+  // A red rectangle
   console.log("=========End==========");
 })();
 (() => {
@@ -180,6 +251,26 @@
        console.log( spaceship.numRocketEngines ); // 2
 */
   console.log("========Five========");
+  class Vehicle {
+    constructor(name, maxSpeed) {
+      this.name = name;
+      this.maxSpeed = maxSpeed;
+    }
+    getMaxSpeed() {
+      return this.maxSpeed;
+    }
+  }
+  class Spaceship extends Vehicle {
+    constructor(name, maxSpeed, numRocketEngine) {
+      super(name, maxSpeed);
+      this.numRocketEngine = numRocketEngine;
+    }
+  }
+
+  const spaceship = new Spaceship("Enterprise", 1000, 2);
+  console.log({ spaceship });
+  console.log(spaceship.getMaxSpeed()); // 1000
+  console.log(spaceship.numRocketEngine); // 2
 
   console.log("=========End==========");
 })();

@@ -10,6 +10,60 @@
 */
   console.log("========one========");
 
+  // Question 1: Should I make this method or property static?
+  (() => {
+    const question = "❓ Is this behavior/data shared across all instances?";
+    const answer =
+      "➡️ Yes → Make it static.\n" +
+      "➡️ No  → Keep it instance-level (non-static).";
+    console.log(question);
+    console.log(answer);
+  })();
+
+  // Question 2: Does this method/property need access to 'this' (instance state)?
+  (() => {
+    const question = "❓ Does it depend on instance state?";
+    const answer =
+      "➡️ Yes → It must be an instance method.\n" +
+      "➡️ No  → You can consider making it static.";
+    console.log(question);
+    console.log(answer);
+  })();
+
+  // Question 3: Should it be public or private?
+  (() => {
+    const question =
+      "❓ Should this method/field be accessible from outside the class?";
+    const answer =
+      "➡️ Yes → Make it public.\n" +
+      "➡️ No  → Keep it private to encapsulate internal logic.";
+    console.log(question);
+    console.log(answer);
+  })();
+
+  // Question 4: Will exposing this lead to accidental misuse?
+  (() => {
+    const question = "❓ Will exposing this lead to misuse or security issues?";
+    const answer =
+      "➡️ Yes → Keep it private and create a safe public interface.\n" +
+      "➡️ No  → It's okay to expose it.";
+    console.log(question);
+    console.log(answer);
+  })();
+
+  // Question 5: Is this method just a utility that doesn’t rely on object state?
+  (() => {
+    const question =
+      "❓ Is this a utility/helper function with no 'this' usage?";
+    const answer =
+      "➡️ Yes → Make it static (often makes sense to do so).\n" +
+      "➡️ No  → If it uses instance fields, keep it as an instance method.";
+    console.log(question);
+    console.log(answer);
+  })();
+
+  console.log("======== End Reflection ========");
+
   console.log("=========End==========");
 })();
 (() => {
@@ -40,6 +94,27 @@
 */
   console.log("========Two========");
 
+  class Utilities {
+    static camelCase(str) {
+      return str
+        .toLowerCase()
+        .split(" ")
+        .map((word, index) => {
+          if (index === 0) return word;
+          return word[0].toUpperCase() + word.slice(1);
+        })
+        .join("");
+    }
+  }
+
+  console.log(Utilities.camelCase("hello there"));
+  // helloThere
+  console.log(Utilities.camelCase("HELLO THERE"));
+  // helloThere
+  console.log(Utilities.camelCase("I love cookies"));
+  // iLoveCookies
+  console.log(Utilities.camelCase("Monkey Banana"));
+  // monkeyBanana
   console.log("=========End==========");
 })();
 (() => {
@@ -126,6 +201,23 @@
        // HP ["Red", "Green", "Blue"]
 */
   console.log("========Five========");
+  class Printer {
+    brand;
+    colours;
 
+    constructor(brand, colours) {
+      this.#setupPrinter(brand, colours);
+    }
+
+    // 🔐 Private method using '#' (hard private)
+    #setupPrinter(brand, colours) {
+      this.brand = brand;
+      this.colours = colours;
+    }
+  }
+
+  const printer = new Printer("HP", ["Red", "Green", "Blue"]);
+  console.log(printer.brand); // HP
+  console.log(printer.colours); // ["Red", "Green", "Blue"]
   console.log("=========End==========");
 })();

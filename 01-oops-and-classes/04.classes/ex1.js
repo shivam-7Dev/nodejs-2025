@@ -19,7 +19,19 @@
 */
 
   console.log("========one========");
+  class Animal {
+    constructor(type, name) {
+      this.type = type;
+      this.name = name;
+    }
+  }
 
+  const monkey = new Animal("monkey", "Abu");
+  const simba = new Animal("cat", "sibma");
+  console.log({
+    monkey,
+    simba,
+  });
   console.log("=========End==========");
 })();
 
@@ -82,7 +94,32 @@
 */
 
   console.log("========Three========");
+  class Book {
+    constructor(name, author) {
+      this.name = name;
+      this.author = author;
+    }
+  }
+  class Bookstore {
+    constructor(books) {
+      this.books = books;
+    }
 
+    listBooks() {
+      for (const book of this.books) {
+        const { name, author } = book;
+
+        console.log(`${name} by ${author}`);
+      }
+    }
+  }
+
+  const nineteen84 = new Book("1984", "George Orwell");
+  const hp = new Book("Harry Potter", "J.K. Rowling");
+
+  const bookstore = new Bookstore([nineteen84, hp]);
+
+  bookstore.listBooks();
   console.log("=========End==========");
 })();
 
@@ -112,7 +149,26 @@
        grade (Should be 84.33)
 */
   console.log("========Four========");
+  class Student {
+    constructor(name, major, grades) {
+      this.name = name;
+      this.grades = grades;
+      this.major = major;
+    }
+    addGrades(grade) {
+      this.grades.push(grade);
+    }
+    gpa() {
+      const sum = this.grades.reduce((total, currgrade) => {
+        return total + currgrade;
+      }, 0);
 
+      console.log("gpa is ", sum / this.grades.length);
+    }
+  }
+  const eva = new Student("Eva", "Arts", [95, 75, 83]);
+
+  eva.gpa();
   console.log("=========End==========");
 })();
 
@@ -141,6 +197,42 @@
 */
 
   console.log("========Five========");
+  class EnemyFactory {
+    generateFlyingEnemy(name) {
+      class FlyingEnemy {
+        constructor(name) {
+          this.name = name;
+        }
+        fly() {
+          console.log(`${this.name} can fly`);
+        }
+      }
+
+      return new FlyingEnemy(name);
+    }
+
+    static generateSwimmingEnemy(name) {
+      class SwimmingEnemy {
+        constructor(name) {
+          this.name = name;
+        }
+
+        swim() {
+          console.log(`${this.name} can swim `);
+        }
+      }
+
+      return new SwimmingEnemy(name);
+    }
+  }
+
+  const factory = new EnemyFactory();
+  const flying = factory.generateFlyingEnemy("batman");
+
+  flying.fly(); // batman can fly!
+
+  const swimming = EnemyFactory.generateSwimmingEnemy("aquaman");
+  swimming.swim(); // aquaman can swim!
 
   console.log("=========End==========");
 })();

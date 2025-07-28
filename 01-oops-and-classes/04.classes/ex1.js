@@ -233,6 +233,20 @@
 
   const swimming = EnemyFactory.generateSwimmingEnemy("aquaman");
   swimming.swim(); // aquaman can swim!
+  console.log(Object.getOwnPropertyNames(EnemyFactory));
+  //[ 'length', 'name', 'prototype', 'generateSwimmingEnemy' ]
+
+  console.log(Object.getOwnPropertyNames(factory));
+  //[]
+
+  console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(factory)));
+  // [ 'constructor', 'generateFlyingEnemy' ]
+
+  console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(flying)));
+  // ['constructor', 'fly']
+
+  console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(swimming)));
+  // ['constructor', 'swim']
 
   console.log("=========End==========");
 })();

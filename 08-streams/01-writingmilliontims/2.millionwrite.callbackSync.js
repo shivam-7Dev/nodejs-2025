@@ -25,6 +25,14 @@ const fs = require("fs");
  */
 
 /*
+
+But memory usage is not mut around 50 MB only
+And system memory is also constant.
+Looks like kernel buffer is writing very fast to disk
+and there is no memory build up
+Although thread poll becomes stuck because of a million loop
+Seems like ChatGPT gave worng answer.
+
  
  fs.writeSync() is synchronous and runs in a tight loop with no waiting.
 

@@ -1,5 +1,5 @@
 /**
- * looping over a million Time both consumes  lots of memory
+ * looping over a million Time both consumes  lots of memory[wrong]
  * But reasons are differet
  * One increase the node memory [Asynchronous=> fs.write()]
  * One des not increase node memory but increase the system cache utilization
@@ -11,13 +11,22 @@
     because it doesn't wait for the disk.
 
 
- Synchronous => fs.writeSync:
+ Synchronous and Blocking => fs.writeSync:
     Fills up the Operating System's buffer cache (in RAM). 
     The loop blocks your Node.js application for each call, 
     but it only waits for the OS to accept the data into its own memory buffer. 
     Your fast loop force-feeds this OS buffer, 
     causing the total system RAM usage to spike,
     even if your specific Node.js process's memory stays low.
+
+
+
+   But memory usage is not mut around 50 MB, for blocking and Synchronous
+   And system memory is also constant.
+   Looks like kernel buffer is writing very fast to disk
+   and there is no memory build up
+   Although thread poll becomes stuck because of a million loop
+   Looks like ChatGPT gave worng answer.
  */
 
 /**
@@ -49,3 +58,12 @@
     stream.end();
 
  */
+
+/**
+   But memory usage is not mut around 50 MB, for blocking and Synchronous
+   And system memory is also constant.
+   Looks like kernel buffer is writing very fast to disk
+   and there is no memory build up
+   Although thread poll becomes stuck because of a million loop
+   Looks like ChatGPT gave worng answer.
+*/

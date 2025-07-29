@@ -21,6 +21,7 @@ const fs = require("fs");
 /*
 million write callback
 million: 2.059s
+memory:800 MB
 
 this takes a lot of memory becasue a million call backs are pillied up in memory
 

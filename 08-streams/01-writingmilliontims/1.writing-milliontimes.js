@@ -22,11 +22,12 @@ const fs = require("fs/promises");
 })();
 
 /**
-Process ID: 411735
+Process ID: 4349
 writing milion times
 size before starting 0
 size after finish 7888890
-task: 15.756s
+task: 7.844s
+node memory: 55 MB
 
 
 Each write call is awaited, which lets the Node.js event loop wait for the OS to flush the data before proceeding.

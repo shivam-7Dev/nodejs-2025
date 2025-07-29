@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/shivam-7Dev/nodejs-2025/issues"
   },
-  "homepage": "https://github.com/shivam-7Dev/nodejs-2025#readme"
+  "homepage": "https://github.com/shivam-7Dev/nodejs-2025#readme",
+  "dependencies": {
+    "inquirer": "^12.8.2"
+  }
 }

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/shivam-7Dev/nodejs-2025#readme",
   "dependencies": {
+    "autocannon": "^8.0.0",
     "inquirer": "^12.8.2"
   }
 }

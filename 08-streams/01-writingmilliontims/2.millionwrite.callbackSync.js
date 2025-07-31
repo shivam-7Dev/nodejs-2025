@@ -10,7 +10,7 @@ const fs = require("fs");
       return;
     }
 
-    for (let index = 0; index < 1000000; index++) {
+    for (let index = 0; index < 10000000; index++) {
       fs.writeSync(fd, `${index} \n`);
     }
 

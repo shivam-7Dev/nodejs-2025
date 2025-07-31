@@ -2,22 +2,28 @@
 
 const autocannon = require("autocannon");
 
+// const baseUrl = "localhost:8000/api";
+const baseUrl = "http://52.56.98.164:8000/api";
+
 const enpoint = {
-  userDashboard: "http://52.56.98.164:8000/api/user/dashboard",
-  userShoots: "http://52.56.98.164:8000/api/user/shoots",
-  leaderBoard: "http://52.56.98.164:8000/api/leaderboard",
-  userSyndicates: "http://52.56.98.164:8000/api/syndicate",
-  friends: "http://52.56.98.164:8000/api/friends",
+  userDashboard: `${baseUrl}/user/dashboard`,
+  userShoots: `${baseUrl}/user/shoots`,
+  leaderBoard: `${baseUrl}/leaderboard`,
+  userSyndicates: `${baseUrl}/syndicate`,
+  friends: `${baseUrl}/friends`,
 };
 
+const loaclToken =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZkM2ViMmY4OWZiM2U4NmI4ZDNhOCIsImVtYWlsIjoic2hpdmFtNy5kZXZAZ21haWwuY29tIiwiaWF0IjoxNzUzODcwNjI1LCJleHAiOjE3NTM5NTcwMjV9.vjsm9d4bjNsIye0s1BB31AAeBAHdR1P3tFdOWXxFGxU";
+const devserverToken =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZkM2ViMmY4OWZiM2U4NmI4ZDNhOCIsImVtYWlsIjoic2hpdmFtNy5kZXZAZ21haWwuY29tIiwiaWF0IjoxNzUzODcxOTcxLCJleHAiOjE3NTM5NTgzNzF9.M8JpDicXVIycyZfuNJqURfiGaha1zpjR-kfe-fSXmCI";
 const instance = autocannon(
   {
     url: enpoint.friends,
     connections: 100,
     duration: 30, // test duration in seconds
     headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2ZlYjNmMWE5MTczN2EwYjdkODdiNSIsImVtYWlsIjoic2hla2hhckBnbWFpbC5jb20iLCJpYXQiOjE3NTM4NTYxMDgsImV4cCI6MTc1Mzk0MjUwOH0.GUYOQ7R7K1bPn6vRT_-ehfDJQQQZi6pms67ZHGsOACY", // insert your JWT here
+      Authorization: devserverToken, // insert your JWT here
     },
     method: "GET",
   },
@@ -146,4 +152,59 @@ function finishedBench(err, res) {
     throughputMax: 35700
   }
 }
+
+
+=================after aggregation========================
+
+
+{
+  url: 'http://52.56.98.164:8000/api/friends',
+  errors: 0,
+  timeouts: 0,
+  statusCodeStats: { '200': { count: 1243 } },
+  latency: { latencyAvg: 2318.84, latencyMax: 3076, latencyMean: 2318.84 },
+  requests: { reqAvg: 41.44, requestsMean: 41.44, reqestMax: 45 },
+  throughput: {
+    throughputAvg: 76431.47,
+    throughputMean: 76431.47,
+    throughputMax: 83025
+  }
+}
+ */
+
+///******************************LocalTesting********************************* */
+
+/**
+ {
+  url: 'http://localhost:8000/api/friends',
+  errors: 0,
+  timeouts: 0,
+  statusCodeStats: { '200': { count: 403 } },
+  latency: { latencyAvg: 6297.46, latencyMax: 7238, latencyMean: 6297.46 },
+  requests: { reqAvg: 13.44, requestsMean: 13.44, reqestMax: 40 },
+  throughput: {
+    throughputAvg: 13918.2,
+    throughputMean: 13918.2,
+    throughputMax: 41440
+  }
+}
+
+
+{
+  url: 'http://52.56.98.164:8000/api/friends',
+  errors: 0,
+  timeouts: 0,
+  statusCodeStats: { '401': { count: 13787 } },
+  latency: { latencyAvg: 216.42, latencyMax: 1127, latencyMean: 216.42 },
+  requests: { reqAvg: 459.57, requestsMean: 459.57, reqestMax: 494 },
+  throughput: {
+    throughputAvg: 177396.27,
+    throughputMean: 177396.27,
+    throughputMax: 190684
+  }
+}
+
+
+
+
  */

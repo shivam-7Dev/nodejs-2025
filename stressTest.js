@@ -2,8 +2,8 @@
 
 const autocannon = require("autocannon");
 
-// const baseUrl = "localhost:8000/api";
-const baseUrl = "http://52.56.98.164:8000/api";
+const baseUrl = "localhost:8000/api";
+// const baseUrl = "http://52.56.98.164:8000/api";
 
 const enpoint = {
   userDashboard: `${baseUrl}/user/dashboard`,
@@ -14,16 +14,16 @@ const enpoint = {
 };
 
 const loaclToken =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZkM2ViMmY4OWZiM2U4NmI4ZDNhOCIsImVtYWlsIjoic2hpdmFtNy5kZXZAZ21haWwuY29tIiwiaWF0IjoxNzUzODcwNjI1LCJleHAiOjE3NTM5NTcwMjV9.vjsm9d4bjNsIye0s1BB31AAeBAHdR1P3tFdOWXxFGxU";
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZkM2ViMmY4OWZiM2U4NmI4ZDNhOCIsImVtYWlsIjoic2hpdmFtNy5kZXZAZ21haWwuY29tIiwiaWF0IjoxNzU1MzI0NDUzLCJleHAiOjE3NTU0MTA4NTN9.fNRKQEtC_U3rs0M5OyVY7Jylp2kltLLYSCtLLlIj8YI";
 const devserverToken =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZkM2ViMmY4OWZiM2U4NmI4ZDNhOCIsImVtYWlsIjoic2hpdmFtNy5kZXZAZ21haWwuY29tIiwiaWF0IjoxNzUzODcxOTcxLCJleHAiOjE3NTM5NTgzNzF9.M8JpDicXVIycyZfuNJqURfiGaha1zpjR-kfe-fSXmCI";
 const instance = autocannon(
   {
-    url: enpoint.friends,
+    url: enpoint.userDashboard,
     connections: 100,
     duration: 30, // test duration in seconds
     headers: {
-      Authorization: devserverToken, // insert your JWT here
+      Authorization: loaclToken, // insert your JWT here
     },
     method: "GET",
   },
